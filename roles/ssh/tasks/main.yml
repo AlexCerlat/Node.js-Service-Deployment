@@ -1,0 +1,6 @@
+---
+- name: Add SSH key for ubuntu user
+  authorized_key:
+    user: hulk
+    state: present
+    key: "{{ lookup('file', '~/.ssh/authorized_keys') }}"

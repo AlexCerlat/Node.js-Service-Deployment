@@ -1,0 +1,23 @@
+---
+- name: Update and upgrade
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Install basic utlities
+  apt:
+    name:
+      - curl
+      - vim
+      - git
+      - ufw
+    state: present
+- name: Install fail2bab
+  apt:
+    name: fail2ban
+    state: present
+- name: Enable and start fail2ban
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes

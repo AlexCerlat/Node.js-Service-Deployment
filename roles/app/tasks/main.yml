@@ -1,0 +1,8 @@
+---
+- name: Download index.html from GitHub
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/index.html"
+    dest: /var/www/html/index.html
+    mode: '0644'
+    owner: www-data
+    group: www-data

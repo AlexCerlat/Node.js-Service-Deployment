@@ -1,0 +1,8 @@
+---
+- name: Download and run Netdata kickstart script
+  ansible.builtin.shell: |
+        wget -O /tmp/netdata-kickstart.sh https://get.netdata.cloud/kickstart.sh
+        sh /tmp/netdata-kickstart.sh --stable-channel \
+          --claim-token MYTOKEN \
+          --claim-rooms MYROOM \
+          --claim-url https://app.netdata.cloud
