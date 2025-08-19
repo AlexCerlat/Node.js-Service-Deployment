@@ -1,4 +1,4 @@
 ---
 - name: Run Ansible Playbook
   ansible.builtin.shell: |
-  ansible-playbook setup.yml --tags nodejs -i inventory.ini
+   ansible-playbook setup.yml --tags nodejs -i inventory.ini
