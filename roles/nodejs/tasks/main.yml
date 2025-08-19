@@ -3,7 +3,7 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cashe: yes
-    loop: 
-- nodejs
-- npm
+    update_cache: yes
+  loop:
+    - nodejs
+    - npm
