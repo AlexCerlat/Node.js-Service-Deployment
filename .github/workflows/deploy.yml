@@ -15,4 +15,4 @@ jobs:
         
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook -i inventory.ini --tags nodejs
+          ansible-playbook setup.yml -i inventory.ini --tags nodejs
