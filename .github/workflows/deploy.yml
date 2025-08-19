@@ -1,4 +1,18 @@
----
-- name: Run Ansible Playbook
-  ansible.builtin.shell: |
-   ansible-playbook setup.yml --tags nodejs -i inventory.ini
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Run Ansible Playbook
+        run: |
+          ansible-playbook setup.yml --tags nodejs -i inventory.ini
