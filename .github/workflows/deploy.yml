@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name:  Add SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.id_rsa_aws }}" > ~/.ssh/id_rsa_aws
+          chmod 600 ~/.ssh/id_rsa_aws
+          
       - name: Checkout repository
         uses: actions/checkout@v3
         
