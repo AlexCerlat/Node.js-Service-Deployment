@@ -4,4 +4,4 @@
     ansible-playbook setup.yml \
       --tags nodejs \
       -i inventory.ini \
-      -u ${{ secrets.SERVER_USER }}
+      -u ${{ secrets.ubuntu }}
