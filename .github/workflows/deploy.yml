@@ -18,7 +18,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/id_rsa_git_with_aws
           chmod 600 ~/.ssh/id_rsa_git_with_aws
-          ssh-keyscan -H <3.71.189.205> >> ~/.ssh/known_hosts
+          ssh-keyscan -H 3.71.189.205 >> ~/.ssh/known_hosts
             
       - name: Run Ansible Playbook
         run: |
