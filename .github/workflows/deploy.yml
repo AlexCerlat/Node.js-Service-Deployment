@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-                 
+        
+      - name: Add SSH key
+        run: |
+          echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/authorized_keys         
       - name: Run Ansible Playbook
         run: |
           ansible-playbook setup.yml -i inventory.ini --tags nodejs
