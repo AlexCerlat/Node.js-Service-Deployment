@@ -13,6 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
+      - name: Setup SSH
+          run: |
+            mkdir -p ~/.ssh
+            echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/id_rsa_git_with_aws
+            chmod 600 ~/.ssh/id_rsa_git_with_aws
+            ssh-keyscan -H <3.71.189.205> >> ~/.ssh/known_hosts
+            
       - name: Run Ansible Playbook
         run: |
           ansible-playbook setup.yml -i inventory.ini --tags nodejs
