@@ -22,7 +22,7 @@ jobs:
 
       - name: Test SSH connection
         run: |
-          ssh -i ~/.ssh/id_rsa_git_with_aws.pub ubuntu@3.71.189.205 "echo ✅ Connected to AWS VM"
+          ssh -i ~/.ssh/id_rsa_git_with_aws ubuntu@3.71.189.205
 
       - name: Run Ansible Playbook
         run: |
