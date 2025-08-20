@@ -16,13 +16,13 @@ jobs:
       - name: Save SSH private key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/id_rsa_git_with_aws
-          chmod 600 ~/.ssh/id_rsa_git_with_aws
+          echo "${{ secrets.id_ed25519_git_with_aws }}" > ~/.ssh/id_ed25519_git_with_aws
+          chmod 600 ~/.ssh/id_ed25519_git_with_aws
           ssh-keyscan -H 3.71.189.205 >> ~/.ssh/known_hosts
 
       - name: Test SSH connection
         run: |
-          ssh -i ~/.ssh/id_rsa_git_with_aws ubuntu@3.71.189.205
+          ssh -i ~/.ssh/id_ed25519_git_with_aws ubuntu@3.71.189.205
 
       - name: Run Ansible Playbook
         run: |
