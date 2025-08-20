@@ -9,10 +9,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:  
-      - name: Add SSH key
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Save SSH private key
         run: |
-          echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/id_rsa_git_with_aws         
+          mkdir -p ~/.ssh
+          echo "${{ secrets.id_rsa_git_with_aws }}" > ~/.ssh/id_rsa_git_with_aws
+          chmod 600 ~/.ssh/id_rsa_git_with_aws
+          ssh-keyscan -H 3.71.189.205 >> ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: |
+          ssh -i ~/.ssh/id_rsa_git_with_aws ubuntu@3.71.189.205 "echo ✅ Connected to AWS VM"
+
       - name: Run Ansible Playbook
         run: |
           ansible-playbook setup.yml -i inventory.ini --tags nodejs
